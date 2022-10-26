@@ -10,11 +10,13 @@
                 $numar = 0;
                 $nr_random = random_int(1, 25);
                 echo "numaru introdus : ".$_POST['nr'].'<br />';
-                echo "numaru introdus : ".$nr_random.'<br />';
+                echo "numaru random : ".$nr_random.'<br />';
                 $numar = (int)$_POST['nr'];
                 $suma = $numar + $nr_random;
                 echo "sume : ".$suma.'<br />';
-               
+            }
+            else{
+                echo "nica introdus";
             }
         ?>
         <form action="" method="POST">
