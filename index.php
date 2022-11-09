@@ -12,12 +12,12 @@
             $dbname = "testing";
             $conn = new mysqli($servername,$username,$password,$dbname);
             
-            if (isset($_POST['submit'])) {
+            if (isset($_GET['submit'])) {
                 $numar = 0;
                 $nr_random = random_int(1, 25);
-                echo "numaru introdus : ".$_POST['nr'].'<br />';
+                echo "numaru introdus : ".$_GET['nr'].'<br />';
                 echo "numaru random : ".$nr_random.'<br />';
-                $numar = (int)$_POST['nr'];
+                $numar = (int)$_GET['nr'];
                 $suma = $numar + $nr_random;
                 echo "sume : ".$suma.'<br />';
 
@@ -37,20 +37,28 @@
                               echo "<table>";
                               echo "<table border='1'>";
                                   echo "<tr>";
+                                      echo "<th>id           |</th>";  
                                       echo "<th>nr introdus  |</th>";
                                       echo "<th>nr random    |</th>";
                                       echo "<th>suma acestora|</th>";
+                                      echo "<th>edit|</th>";
                                   echo "</tr>";
                               while($row = mysqli_fetch_array($result)){
                                   echo "<tr>";
+                                      echo "<td>" . $row['id'] . "</td>";
                                       echo "<td>" . $row['input_number'] . "</td>";
                                       echo "<td>" . $row['random_number'] . "</td>";
                                       echo "<td>" . $row['number_result'] . "</td>";
+                                      $id= $row['id'];
+                                      $input_nr= $row['input_number'];
+                                      echo "<td>"."<a href='edit/$input_nr/$id'>edit ".$row['input_number']."</a><br>"."</td>";
+                                      
                                   echo "</tr>";
                               }
                               echo "</table>";
                               // Free result set
                               mysqli_free_result($result);
+                              
                           } else{
                               echo "No records matching your query were found.";
                           }
@@ -64,7 +72,7 @@
                 echo "nica introdus";
             }
         ?>
-        <form action="" method="POST">
+        <form action="" method="GET">
             <p><input type="number" name="nr" value="value"></p>
             <p><input type="submit" name="submit" value="Submit"></p>
         </form> 

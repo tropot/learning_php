@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^main?$ index.php
+
+RewriteRule ^edit/([0-9]+)/([0-9]+) edit.php?editNumber=$1&id=$2
