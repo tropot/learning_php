@@ -6,12 +6,8 @@
     </head>
     <body>
         <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "testing";
+            include 'db.php';
             $conn = new mysqli($servername,$username,$password,$dbname);
-            
             if (isset($_GET['editNumber']) && isset($_GET['id'])) {
                 echo "Number that you are editing :".$_GET['editNumber']."</br>";
                 echo "id :".$_GET['id']."</br>";

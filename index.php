@@ -6,10 +6,7 @@
     </head>
     <body>
         <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "testing";
+            include 'db.php';
             $conn = new mysqli($servername,$username,$password,$dbname);
             
             if (isset($_GET['submit'])) {
